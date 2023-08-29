@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Transaction Detail</h1>
+        <p><strong>Name:</strong> {{ object.name }}</p>
+        <p><strong>Time:</strong> {{ object.time }}</p>
+        <p><strong>Amount:</strong> {{ object.amount }}</p>
+        <p><strong>Status:</strong> {{ object.status }}</p>
+        <p><strong>Customer:</strong> {{ object.customer }}</p>
+        <a class="btn btn-primary" href="{% url 'transaction:transaction_update' object.pk %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'transaction:transaction_delete' object.pk %}">Delete</a>
+        <a class="btn btn-secondary" href="{% url 'transaction:transaction_list' %}">Back to Transaction List</a>
+    </div>
+{% endblock %}

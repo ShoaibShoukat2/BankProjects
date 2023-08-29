@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Update ATM</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a class="btn btn-secondary ml-2" href="{% url 'atm:atm_detail' object.pk %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

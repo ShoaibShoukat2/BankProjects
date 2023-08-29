@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Customer{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-semibold mb-4">Update Customer</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="{{ form.name.id_for_label }}" class="block text-sm font-semibold mb-1">Name:</label>
+                <input type="text" id="{{ form.name.id_for_label }}" name="{{ form.name.name }}" value="{{ form.name.value }}" class="w-full border p-2 rounded">
+                {% if form.name.errors %}
+                    <p class="text-red-500 text-sm">{{ form.name.errors|join:", " }}</p>
+                {% endif %}
+            </div>
+            <div class="mb-4">
+                <label for="{{ form.cpr.id_for_label }}" class="block text-sm font-semibold mb-1">CPR:</label>
+                <input type="text" id="{{ form.cpr.id_for_label }}" name="{{ form.cpr.name }}" value="{{ form.cpr.value }}" class="w-full border p-2 rounded">
+                {% if form.cpr.errors %}
+                    <p class="text-red-500 text-sm">{{ form.cpr.errors|join:", " }}</p>
+                {% endif %}
+            </div>
+            <div class="mb-4">
+                <label for="{{ form.account_no.id_for_label }}" class="block text-sm font-semibold mb-1">Account Number:</label>
+                <input type="text" id="{{ form.account_no.id_for_label }}" name="{{ form.account_no.name }}" value="{{ form.account_no.value }}" class="w-full border p-2 rounded">
+                {% if form.account_no.errors %}
+                    <p class="text-red-500 text-sm">{{ form.account_no.errors|join:", " }}</p>
+                {% endif %}
+            </div>
+            <div class="mb-4">
+                <label for="{{ form.pin_code.id_for_label }}" class="block text-sm font-semibold mb-1">PIN Code:</label>
+                <input type="password" id="{{ form.pin_code.id_for_label }}" name="{{ form.pin_code.name }}" class="w-full border p-2 rounded">
+                {% if form.pin_code.errors %}
+                    <p class="text-red-500 text-sm">{{ form.pin_code.errors|join:", " }}</p>
+                {% endif %}
+            </div>
+            <button type="submit" class="inline-block py-2 px-4 bg-blue-500 text-white rounded">Update</button>
+            <a class="inline-block py-2 px-4 bg-gray-300 text-gray-700 rounded ml-2" href="{% url 'customer:customer_detail' object.pk %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

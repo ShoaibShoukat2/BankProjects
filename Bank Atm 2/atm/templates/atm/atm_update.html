@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="text-2xl font-semibold mb-4">Update ATM</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label for="{{ form.atm_location.id_for_label }}" class="block text-sm font-semibold mb-1">ATM Location:</label>
+                <input type="text" id="{{ form.atm_location.id_for_label }}" name="{{ form.atm_location.html_name }}" value="{{ form.atm_location.value }}" placeholder="Enter ATM location" class="w-full p-2 border rounded">
+            </div>
+            <div class="mb-4">
+                <label for="{{ form.max_withdrawal.id_for_label }}" class="block text-sm font-semibold mb-1">Max Withdrawal:</label>
+                <input type="text" id="{{ form.max_withdrawal.id_for_label }}" name="{{ form.max_withdrawal.html_name }}" value="{{ form.max_withdrawal.value }}" placeholder="Enter max withdrawal" class="w-full p-2 border rounded">
+            </div>
+            <div class="mb-4">
+                <label for="{{ form.notes.id_for_label }}" class="block text-sm font-semibold mb-1">Notes:</label>
+                <input type="text" id="{{ form.notes.id_for_label }}" name="{{ form.notes.html_name }}" value="{{ form.notes.value }}" placeholder="Enter notes" class="w-full p-2 border rounded">
+            </div>
+            <button type="submit" class="inline-block py-2 px-4 bg-blue-500 text-white rounded">Update</button>
+            <a class="inline-block py-2 px-4 bg-gray-300 text-gray-700 rounded ml-2" href="{% url 'atm:atm_detail' object.pk %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

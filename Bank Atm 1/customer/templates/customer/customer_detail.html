@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer Detail{% endblock %}
+
+{% block content %}
+    <h1>Customer Detail</h1>
+    <p><strong>Name:</strong> {{ object.name }}</p>
+    <p><strong>CPR:</strong> {{ object.cpr }}</p>
+    <p><strong>Account Number:</strong> {{ object.account_no }}</p>
+    <p><strong>PIN Code:</strong> {{ object.pin_code }}</p>
+    <a class="btn btn-primary" href="{% url 'customer:customer_update' object.pk %}">Edit</a>
+    <a class="btn btn-danger" href="{% url 'customer:customer_delete' object.pk %}">Delete</a>
+    <a class="btn btn-secondary" href="{% url 'customer:customer_list' %}">Back to Customer List</a>
+{% endblock %}

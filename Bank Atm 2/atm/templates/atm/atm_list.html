@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="text-2xl font-semibold mb-4">ATM List</h1>
+        <ul class="list-group">
+            {% for atm in object_list %}
+                <li class="list-group-item flex justify-between items-center">
+                    <a href="{% url 'atm:atm_detail' atm.pk %}" class="text-blue-500">{{ atm.atm_location }}</a>
+                    <span class="inline-block bg-blue-500 text-white py-1 px-2 rounded">{{ atm.id }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <a class="inline-block py-2 px-4 mt-4 bg-blue-500 text-white rounded" href="{% url 'atm:atm_create' %}">Create New ATM</a>
+    </div>
+{% endblock %}

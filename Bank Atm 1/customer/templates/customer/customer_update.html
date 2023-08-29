@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Customer{% endblock %}
+
+{% block content %}
+    <h1>Update Customer</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Name:</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.cpr.id_for_label }}">CPR:</label>
+            {{ form.cpr }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.account_no.id_for_label }}">Account Number:</label>
+            {{ form.account_no }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.pin_code.id_for_label }}">PIN Code:</label>
+            {{ form.pin_code }}
+        </div>
+        <button type="submit" class="btn btn-primary">Update </button>
+        <a class="btn btn-secondary ml-2" href="{% url 'customer:customer_detail' object.pk %}">Cancel</a>
+    </form>
+{% endblock %}

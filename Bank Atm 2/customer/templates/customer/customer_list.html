@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Customer List{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto p-4">
+        <h1 class="text-2xl font-semibold mb-4">Customer List</h1>
+        <ul class="space-y-2">
+            {% for customer in object_list %}
+                <li class="border p-4 flex justify-between items-center">
+                    <a href="{% url 'customer:customer_detail' customer.pk %}" class="text-blue-500 font-semibold">{{ customer.name }}</a>
+                    <span class="bg-blue-500 text-white px-2 py-1 rounded">{{ customer.id }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <a class="inline-block py-2 px-4 bg-blue-500 text-white rounded mt-4" href="{% url 'customer:customer_create' %}">Create New Customer</a>
+    </div>
+{% endblock %}

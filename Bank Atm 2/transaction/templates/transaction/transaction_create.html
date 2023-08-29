@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mx-auto mt-4">
+        <h1 class="text-2xl font-semibold mb-4">Create Transaction</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-4 {% if form.name.errors %}has-error{% endif %}">
+                <label for="{{ form.name.id_for_label }}" class="block text-sm font-semibold mb-1">Name:</label>
+                <input type="text" id="{{ form.name.id_for_label }}" name="{{ form.name.html_name }}" placeholder="Enter name" class="w-full p-2 border rounded">
+                {% if form.name.errors %}
+                    <p class="text-red-500 text-sm">{{ form.name.errors|join:", " }}</p>
+                {% endif %}
+            </div>
+            <div class="mb-4 {% if form.time.errors %}has-error{% endif %}">
+                <label for="{{ form.time.id_for_label }}" class="block text-sm font-semibold mb-1">Time:</label>
+                <input type="text" id="{{ form.time.id_for_label }}" name="{{ form.time.html_name }}" placeholder="Enter time" class="w-full p-2 border rounded">
+                {% if form.time.errors %}
+                    <p class="text-red-500 text-sm">{{ form.time.errors|join:", " }}</p>
+                {% endif %}
+            </div>
+            <div class="mb-4 {% if form.amount.errors %}has-error{% endif %}">
+                <label for="{{ form.amount.id_for_label }}" class="block text-sm font-semibold mb-1">Amount:</label>
+                <input type="text" id="{{ form.amount.id_for_label }}" name="{{ form.amount.html_name }}" placeholder="Enter amount" class="w-full p-2 border rounded">
+                {% if form.amount.errors %}
+                    <p class="text-red-500 text-sm">{{ form.amount.errors|join:", " }}</p>
+                {% endif %}
+            </div>
+            <div class="mb-4 {% if form.status.errors %}has-error{% endif %}">
+                <label for="{{ form.status.id_for_label }}" class="block text-sm font-semibold mb-1">Status:</label>
+                <input type="text" id="{{ form.status.id_for_label }}" name="{{ form.status.html_name }}" placeholder="Enter status" class="w-full p-2 border rounded">
+                {% if form.status.errors %}
+                    <p class="text-red-500 text-sm">{{ form.status.errors|join:", " }}</p>
+                {% endif %}
+            </div>
+            <div class="mb-4 {% if form.customer.errors %}has-error{% endif %}">
+                <label for="{{ form.customer.id_for_label }}" class="block text-sm font-semibold mb-1">Customer:</label>
+                {{ form.customer }}
+                {% if form.customer.errors %}
+                    <p class="text-red-500 text-sm">{{ form.customer.errors|join:", " }}</p>
+                {% endif %}
+            </div>
+            <button type="submit" class="inline-block py-2 px-4 bg-blue-500 text-white rounded">Create</button>
+            <a class="inline-block py-2 px-4 bg-gray-300 text-gray-700 rounded ml-2" href="{% url 'transaction:transaction_list' %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}
